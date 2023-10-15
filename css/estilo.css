@@ -1,0 +1,243 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #de7d1c;
+    flex-direction: column;
+}
+
+/* Estilizando o titulo da Página */
+#header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
+#tituloPagina {
+    color: #fff;
+}
+
+#tituloPagina img{
+   margin-left: 10px;
+   margin-bottom: 40px;
+   border: 1px solid red;
+}
+
+/* Estilizando a imagem-pizza */
+#imagem-pizza {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+}
+
+#imagem-pizza #centraliza-pizza {
+    width: 100px; /* Utilizado para centralizar a pizza */
+    position: relative;
+}
+
+#imagem-pizza #fatia1 {
+    display: inline-block; /* Utilizado somente aqui para que se inicie as fatias somente aqui */
+    position: absolute;
+    /* border: 1px solid blue; */
+    top: 20px;
+    left: 0px;
+    bottom: 0;
+}
+
+#imagem-pizza #fatia2 {
+    position: absolute;
+    /* border: 1px solid yellow; */
+    top: 5px;
+    left: 27px;
+    bottom: 0;
+    transform: rotate(-60deg);
+}
+#imagem-pizza #fatia3 {
+    position: absolute;
+    /* border: 1px solid green; */
+    top: -25px;
+    left: 27px;
+    bottom: 0;
+    transform: rotate(-120deg);
+}
+#imagem-pizza #fatia4 {
+    position: absolute;
+    /* border: 1px solid white; */
+    top: -40px;
+    left: 0px;
+    bottom: 0;
+    transform: rotate(-180deg);
+}
+#imagem-pizza #fatia5 {
+    position: absolute;
+    /* border: 1px solid pink; */
+    top: -25px;
+    left: -27px;
+    bottom: 0;
+    transform: rotate(120deg);
+}
+#imagem-pizza #fatia6 {
+    position: absolute;
+    /* border: 1px solid white; */
+    top: 5px;
+    left: -27px;
+    bottom: 0;
+    transform: rotate(60deg);
+}
+
+#contador {
+    color: #fff;
+    font-weight: bold;
+}
+
+.fatia {
+    display: none;
+}
+
+#inputs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    flex-direction: column;
+    top: 90px;
+    left: -15px;
+    gap: 10px;
+}
+
+#input-nome {
+    border: none;
+    border-radius: 5px;
+    background-color: #f6b84c;
+    transition: 0.5s;
+    padding: 5px;
+
+}
+
+#input-nome:focus {
+    outline: none;
+    border: 1px solid #fff;
+    color: #fff;
+    transition: 0.5s;
+}
+
+
+#inputs #adicionarFatia {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    outline: none;
+    padding: 10px;
+    background-color: #f6b84c;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+#inputs #adicionarFatia:hover {
+    border: 1px solid red;
+    color: red;
+}
+
+#inputs #adicionarFatia img {
+    width: 30px;
+}
+
+/* Alterações do botão de adicionar pessoas */
+#inputs #adicionarParticipante {
+    border: none;
+    outline: none;
+    padding: 10px;
+    background-color: #f6b84c;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+#inputs #adicionarParticipante:hover {
+    border: 1px solid #fff;
+    color: #fff;
+}
+
+/* Formatações da div botoes */
+#botoes {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 10px;
+}
+
+/* FORMATAÇÕES DO FOOTER */
+#rodape {
+    position: relative;
+    top: 200px;
+}
+
+#rodape h2 {
+    color: #fff;
+}
+
+#rodape span {
+    color: #ac1b1b;
+    text-decoration: underline;
+}
+
+/* FORMATAÇÕES PARA DEIXAR RESPONSIVIDADE COM MEDIA QUERYS*/
+
+/* Extra small devices (portrait phones, less than 576px)*/
+@media (max-width: 575.98px) {
+	#header img {
+        display: none;
+    }
+    #header h1 {
+        text-align: center;
+    }
+
+    #rodape h2 {
+        text-align: center;
+    }
+}
+
+/* Small devices (landscape phones, 576px and up)*/
+@media (min-width: 576px) and (max-width: 767.98px) {
+	#header img {
+        display: none;
+        
+    }
+    #header h1 {
+        text-align: center;
+    }
+
+    #rodape h2 {
+        text-align: center;
+    }
+}
+
+/* Medium devices (tablets, 768px and up)*/
+@media (min-width: 768px) and (max-width: 991.98px) {
+	#rodape h2 {
+        text-align: center;
+    }
+}
+
+/* Large devices (desktops, 992px and up)*/
+@media (min-width: 992px) and (max-width: 1199.98px) {
+	
+}
+
+/* Extra large devices (large desktops, 1200px and up)*/
+@media (min-width: 1200px) {
+	
+}

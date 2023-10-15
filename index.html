@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contador de Pizza</title>
+
+    <!-- CSS Customizado -->
+    <link rel="stylesheet" href="css/estilo.css">
+
+    <!-- JQuery 3.7.1 -->
+    <script src="js/jQuery-3.7.1.js"></script>
+
+    <!-- Link do Fontawesome -->
+    <script src="https://kit.fontawesome.com/b3a029b029.js"></script>
+
+    <script>
+        var contadorPizza = 1;
+        var contadorAtual = 1;
+
+        function adicionarFatia() {
+            contadorPizza = contadorPizza + 1;
+            contadorAtual = contadorAtual + 1;
+
+            //Alterando o contador de Pizza juntamente com as fátias
+            document.getElementById('contador').innerText = contadorPizza;
+
+            //Alterando o CSS das Pizzas caso ele aperta em somar
+            if(contadorAtual == 2) {
+                document.getElementById('fatia2').style.display = 'inline-block';
+            } else if(contadorAtual == 3) {
+                document.getElementById('fatia3').style.display = 'inline-block';
+            } else if(contadorAtual == 4) {
+                document.getElementById('fatia4').style.display = 'inline-block';
+            } else if(contadorAtual == 5) {
+                document.getElementById('fatia5').style.display = 'inline-block';
+            } else if(contadorAtual == 6) {
+                document.getElementById('fatia6').style.display = 'inline-block';
+            } else {
+                //Retornando para o contador de pizza zerado
+                document.getElementById('fatia2').style.display = 'none';
+                document.getElementById('fatia3').style.display = 'none';
+                document.getElementById('fatia4').style.display = 'none';
+                document.getElementById('fatia5').style.display = 'none';
+                document.getElementById('fatia6').style.display = 'none';
+                contadorAtual = 1;
+            }
+        }
+
+        function removerFatia() {
+            contadorPizza = contadorPizza - 1;
+
+            //Validando para que ele nunca seja negativo
+            if(contadorPizza < 1) {
+                contadorPizza = 1;
+            }
+            
+            //Removendo do contador de Pizza juntamente com as fátias
+            document.getElementById('contador').innerText = contadorPizza;
+
+            //Alterando o CSS das Pizzas para sumir conforme o contador o contadorAtual
+            if(contadorAtual == 2) {
+                document.getElementById('fatia2').style.display = 'none';
+                contadorAtual = contadorAtual - 1;
+            } else if(contadorAtual == 3) {
+                document.getElementById('fatia3').style.display = 'none';
+                contadorAtual = contadorAtual - 1;
+            } else if(contadorAtual == 4) {
+                document.getElementById('fatia4').style.display = 'none';
+                contadorAtual = contadorAtual - 1;
+            } else if(contadorAtual == 5) {
+                document.getElementById('fatia5').style.display = 'none';
+                contadorAtual = contadorAtual - 1;
+            } else if(contadorAtual == 6) {
+                document.getElementById('fatia6').style.display = 'none';
+                contadorAtual = contadorAtual - 1;
+            } else {
+                //Retornando para o contador de pizza cheio
+                document.getElementById('fatia2').style.display = 'inline-block';
+                document.getElementById('fatia3').style.display = 'inline-block';
+                document.getElementById('fatia4').style.display = 'inline-block';
+                document.getElementById('fatia5').style.display = 'inline-block';
+                document.getElementById('fatia6').style.display = 'inline-block';
+                contadorAtual = 6;
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <header id="header">
+        <h1 id="tituloPagina">Contador de Pizza, ganhe de seus amigos!</h1>
+        <img src="img/fatia-pizza.png" alt="Imagem de uma fatia de pizza">
+    </header>
+    
+    <main id="main">
+        <div id="container">
+            <div id="imagem-pizza">
+                <div id="centraliza-pizza">
+                    <img src="img/fatia-pizza2.png" class="fatia" id="fatia1" alt="">
+                    <img src="img/fatia-pizza2.png" class="fatia" id="fatia2" alt="">
+                    <img src="img/fatia-pizza2.png" class="fatia" id="fatia3" alt="">
+                    <img src="img/fatia-pizza2.png" class="fatia" id="fatia4" alt="">
+                    <img src="img/fatia-pizza2.png" class="fatia" id="fatia5" alt="">
+                    <img src="img/fatia-pizza2.png" class="fatia" id="fatia6" alt="">
+                </div>
+                <div id="contador">
+                    <h4>1</h4>
+                </div>
+            </div>
+
+            <div id="inputs">
+                <label for="input-nome">Nome</label>
+                <input type="text" id="input-nome">
+                
+                <section id="botoes">
+                    <button type="button" id="adicionarFatia" onclick="adicionarFatia()">
+                        Adicionar Pedaço 
+                        <img src="img/fatia-pizza.png" alt="">
+                    </button> 
+                    <button type="button" id="adicionarFatia" onclick="removerFatia()">
+                        Remover Pedaço 
+                        <img src="img/fatia-pizza.png" alt="">
+                    </button> 
+                </section>
+                <!-- <button type="button" id="adicionarParticipante" onclick="adicionarUsuario()" >Adicionar Participante</button> -->
+            </div>
+        </div>
+    </main>
+
+    <footer id="rodape">
+        <h2>© Todos os direitos reservados para o desenvolvedor <span>Matteo Kmeliuskas</span></h2>
+    </footer>
+
+    
+
+</body>
+</html>
