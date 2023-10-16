@@ -40,6 +40,7 @@ body {
     position: relative;
     justify-content: center;
     align-items: center;
+    left: 20px;
 }
 
 #imagem-pizza #centraliza-pizza {
@@ -98,6 +99,7 @@ body {
 }
 
 #contador {
+    margin-left: 1.2rem;
     color: #fff;
     font-weight: bold;
 }
@@ -123,13 +125,14 @@ body {
     background-color: #f6b84c;
     transition: 0.5s;
     padding: 5px;
+    border: 1px solid #fff;
+    text-align: center;
 
 }
 
 #input-nome:focus {
     outline: none;
-    border: 1px solid #fff;
-    color: #fff;
+    border: 1px solid red;
     transition: 0.5s;
 }
 
@@ -144,6 +147,7 @@ body {
     background-color: #f6b84c;
     transition: 0.5s;
     cursor: pointer;
+    border: 1px solid #fff;
 }
 
 #inputs #adicionarFatia:hover {
@@ -152,6 +156,29 @@ body {
 }
 
 #inputs #adicionarFatia img {
+    width: 30px;
+}
+
+
+#inputs #removerFatia {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    outline: none;
+    padding: 10px;
+    background-color: #f6b84c;
+    transition: 0.5s;
+    cursor: pointer;
+    border: 1px solid #fff;
+}
+
+#inputs #removerFatia:hover {
+    border: 1px solid red;
+    color: red;
+}
+
+#inputs #removerFatia img {
     width: 30px;
 }
 
@@ -177,6 +204,7 @@ body {
     align-items: center;
     flex-direction: row;
     gap: 10px;
+    transform: scaleX(10px);
 }
 
 /* FORMATAÇÕES DO FOOTER */
@@ -208,6 +236,13 @@ body {
     #rodape h2 {
         text-align: center;
     }
+    #inputs {
+        position: relative;
+        left: 5px;
+    }
+    #imagem-pizza {
+        left: 35px;
+    }
 }
 
 /* Small devices (landscape phones, 576px and up)*/
@@ -223,6 +258,7 @@ body {
     #rodape h2 {
         text-align: center;
     }
+    
 }
 
 /* Medium devices (tablets, 768px and up)*/
