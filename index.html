@@ -82,15 +82,19 @@
             } else if(contadorAtual == 6) {
                 document.getElementById('fatia6').style.display = 'none';
                 contadorAtual = contadorAtual - 1;
-            } else {
-                //Retornando para o contador de pizza cheio
-                document.getElementById('fatia2').style.display = 'inline-block';
-                document.getElementById('fatia3').style.display = 'inline-block';
-                document.getElementById('fatia4').style.display = 'inline-block';
-                document.getElementById('fatia5').style.display = 'inline-block';
-                document.getElementById('fatia6').style.display = 'inline-block';
-                contadorAtual = 6;
+            } else if(contadorAtual == 1) {
+
+                if(contadorPizza >= 6) { //Adicionada a verifiçãop confornme o contador total de Pizzas agora para validar os pedaços
+                    //Retornando para o contador de pizza cheio
+                    document.getElementById('fatia2').style.display = 'inline-block';
+                    document.getElementById('fatia3').style.display = 'inline-block';
+                    document.getElementById('fatia4').style.display = 'inline-block';
+                    document.getElementById('fatia5').style.display = 'inline-block';
+                    document.getElementById('fatia6').style.display = 'inline-block';
+                    contadorAtual = 6;
+                }
             }
+            
         }
     </script>
 </head>
