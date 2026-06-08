@@ -12,7 +12,7 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: #de7d1c;
+    background: linear-gradient(135deg, #de7d1c 0%, #f6b84c 100%);
     flex-direction: column;
 }
 
@@ -26,12 +26,15 @@ body {
 
 #tituloPagina {
     color: #fff;
+    font-weight: 600;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 #tituloPagina img{
    margin-left: 10px;
    margin-bottom: 40px;
-   border: 1px solid red;
+   height: 40px;
+   opacity: 0.8;
 }
 
 /* Estilizando o formulário de participantes */
@@ -43,20 +46,26 @@ body {
     gap: 10px;
 }
 
+#inputs label {
+    color: #fff;
+    font-weight: 500;
+    font-size: 16px;
+}
+
 #input-nome {
     border: none;
-    border-radius: 5px;
-    background-color: #f6b84c;
-    transition: 0.5s;
-    padding: 5px;
-    border: 1px solid #fff;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.9);
+    transition: all 0.3s ease;
+    padding: 12px 20px;
     text-align: center;
+    font-size: 16px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 #input-nome:focus {
     outline: none;
-    border: 1px solid red;
-    transition: 0.5s;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 /* Input group para alinhar campo e botão */
@@ -70,19 +79,23 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 5px;
+    gap: 8px;
     border: none;
     outline: none;
-    padding: 10px 15px;
-    background-color: #f6b84c;
-    transition: 0.5s;
+    padding: 12px 24px;
+    background: #fff;
+    transition: all 0.3s ease;
     cursor: pointer;
-    border: 1px solid #fff;
+    border-radius: 12px;
+    color: #de7d1c;
+    font-weight: 600;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 #inputs #adicionarParticipante:hover {
-    border: 1px solid red;
-    color: #333;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+    color: #ff8c00;
 }
 
 /* Estilizando a seção de participantes */
@@ -97,7 +110,9 @@ body {
 #participantes-section h2 {
     color: #fff;
     text-align: center;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
+    font-weight: 500;
+    font-size: 20px;
 }
 
 #lista-participantes {
@@ -114,10 +129,11 @@ body {
 }
 
 .participante-card {
-    background-color: #f6b84c;
-    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 16px;
     padding: 20px;
-    border: 2px solid #fff;
+    border: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .participante-header {
@@ -129,29 +145,33 @@ body {
 
 .participante-header h3 {
     margin: 0;
-    color: #333;
+    color: #2d3748;
+    font-weight: 600;
 }
 
 .btn-remover-pessoa {
-    background: none;
+    background: rgba(220, 38, 38, 0.1);
     border: none;
-    color: #ac1b1b;
+    color: #dc2626;
     cursor: pointer;
     font-size: 18px;
-    padding: 5px;
+    padding: 8px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
 }
 
 .btn-remover-pessoa:hover {
-    color: #ff0000;
+    background: rgba(220, 38, 38, 0.2);
+    color: #b91c1c;
 }
 
 .participante-conteudo {
     display: flex;
     justify-content: flex-start;
-    align-items: flex-start;
+    align-items: center;
     flex-wrap: wrap;
-    gap: 15px;
-    padding: 15px 0 15px 15px;
+    gap: 20px;
+    padding: 20px 0 15px 15px;
 }
 
 /* Pizza container - visual circular igual ao original */
@@ -168,7 +188,7 @@ body {
     position: relative;
     flex-shrink: 0;
     margin-left: 15px;
-    margin-top: 10px;
+    margin-top: 5px;
 }
 
 .pizzas-wrapper .pizza-container:first-child {
@@ -230,12 +250,12 @@ body {
 }
 
 .contador-pizza {
-    color: #fff;
-    font-weight: bold;
+    color: #de7d1c;
+    font-weight: 700;
 }
 
 .contador-pizza span {
-    font-size: 24px;
+    font-size: 28px;
 }
 
 .botoes-participante {
@@ -244,18 +264,22 @@ body {
 }
 
 .btn-fatia {
-    background-color: #de7d1c;
-    border: 1px solid #fff;
-    color: #fff;
-    width: 35px;
-    height: 35px;
-    border-radius: 5px;
+    background: #fff;
+    border: 2px solid #de7d1c;
+    color: #de7d1c;
+    width: 45px;
+    height: 45px;
+    border-radius: 12px;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 20px;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .btn-fatia:hover {
-    background-color: #ff8c00;
+    background: #de7d1c;
+    color: white;
+    transform: scale(1.1);
 }
 
 /* FORMATAÇÕES DO FOOTER */
@@ -265,11 +289,15 @@ body {
 
 #rodape h2 {
     color: #fff;
+    font-weight: 400;
+    font-size: 14px;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 #rodape span {
-    color: #ac1b1b;
-    text-decoration: underline;
+    color: #ffc107;
+    font-weight: 700;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 /* FORMATAÇÕES PARA DEIXAR RESPONSIVIDADE COM MEDIA QUERYS*/
@@ -301,9 +329,12 @@ body {
         margin-top: 10px;
     }
     .btn-fatia {
-        width: 40px;
-        height: 40px;
-        font-size: 18px;
+        width: 50px;
+        height: 50px;
+        font-size: 22px;
+        background: #fff;
+        border: 2px solid #de7d1c;
+        color: #de7d1c;
     }
 }
 
