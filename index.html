@@ -21,82 +21,6 @@
 
     <!-- FavIcon da aplicação -->
     <link rel="shortcut icon" href="img/fatia-pizza.png" type="image/x-icon">
-
-    <script>
-        var contadorPizza = 1;
-        var contadorAtual = 1;
-
-        function adicionarFatia() {
-            contadorPizza = contadorPizza + 1;
-            contadorAtual = contadorAtual + 1;
-
-            //Alterando o contador de Pizza juntamente com as fátias
-            document.getElementById('contador').innerText = contadorPizza;
-
-            //Alterando o CSS das Pizzas caso ele aperta em somar
-            if(contadorAtual == 2) {
-                document.getElementById('fatia2').style.display = 'inline-block';
-            } else if(contadorAtual == 3) {
-                document.getElementById('fatia3').style.display = 'inline-block';
-            } else if(contadorAtual == 4) {
-                document.getElementById('fatia4').style.display = 'inline-block';
-            } else if(contadorAtual == 5) {
-                document.getElementById('fatia5').style.display = 'inline-block';
-            } else if(contadorAtual == 6) {
-                document.getElementById('fatia6').style.display = 'inline-block';
-            } else {
-                //Retornando para o contador de pizza zerado
-                document.getElementById('fatia2').style.display = 'none';
-                document.getElementById('fatia3').style.display = 'none';
-                document.getElementById('fatia4').style.display = 'none';
-                document.getElementById('fatia5').style.display = 'none';
-                document.getElementById('fatia6').style.display = 'none';
-                contadorAtual = 1;
-            }
-        }
-
-        function removerFatia() {
-            contadorPizza = contadorPizza - 1;
-
-            //Validando para que ele nunca seja negativo
-            if(contadorPizza < 1) {
-                contadorPizza = 1;
-            }
-            
-            //Removendo do contador de Pizza juntamente com as fátias
-            document.getElementById('contador').innerText = contadorPizza;
-
-            //Alterando o CSS das Pizzas para sumir conforme o contador o contadorAtual
-            if(contadorAtual == 2) {
-                document.getElementById('fatia2').style.display = 'none';
-                contadorAtual = contadorAtual - 1;
-            } else if(contadorAtual == 3) {
-                document.getElementById('fatia3').style.display = 'none';
-                contadorAtual = contadorAtual - 1;
-            } else if(contadorAtual == 4) {
-                document.getElementById('fatia4').style.display = 'none';
-                contadorAtual = contadorAtual - 1;
-            } else if(contadorAtual == 5) {
-                document.getElementById('fatia5').style.display = 'none';
-                contadorAtual = contadorAtual - 1;
-            } else if(contadorAtual == 6) {
-                document.getElementById('fatia6').style.display = 'none';
-                contadorAtual = contadorAtual - 1;
-            } else if(contadorAtual == 1) {
-
-                if(contadorPizza >= 6) { //Adicionada a verifiçãop confornme o contador total de Pizzas agora para validar os pedaços
-                    //Retornando para o contador de pizza cheio
-                    document.getElementById('fatia2').style.display = 'inline-block';
-                    document.getElementById('fatia3').style.display = 'inline-block';
-                    document.getElementById('fatia4').style.display = 'inline-block';
-                    document.getElementById('fatia5').style.display = 'inline-block';
-                    document.getElementById('fatia6').style.display = 'inline-block';
-                    contadorAtual = 6;
-                }
-            }
-            
-        }
-    </script>
 </head>
 <body>
 
@@ -104,38 +28,24 @@
         <h1 id="tituloPagina">Contador de Pizza, ganhe de seus amigos!</h1>
         <img src="img/fatia-pizza.png" alt="Imagem de uma fatia de pizza">
     </header>
-    
+
     <main id="main">
         <div id="container">
-            <div id="imagem-pizza">
-                <div id="centraliza-pizza">
-                    <img src="img/fatia-pizza2.png" class="fatia" id="fatia1" alt="">
-                    <img src="img/fatia-pizza2.png" class="fatia" id="fatia2" alt="">
-                    <img src="img/fatia-pizza2.png" class="fatia" id="fatia3" alt="">
-                    <img src="img/fatia-pizza2.png" class="fatia" id="fatia4" alt="">
-                    <img src="img/fatia-pizza2.png" class="fatia" id="fatia5" alt="">
-                    <img src="img/fatia-pizza2.png" class="fatia" id="fatia6" alt="">
-                </div>
-                <div id="contador">
-                    <h4>1</h4>
+            <div id="inputs">
+                <label for="input-nome">Nome do participante</label>
+                <div class="input-group">
+                    <input type="text" id="input-nome" placeholder="Digite o nome">
+                    <button type="button" id="adicionarParticipante" onclick="adicionarParticipante()">
+                        <i class="fas fa-user-plus"></i> Adicionar
+                    </button>
                 </div>
             </div>
 
-            <div id="inputs">
-                <label for="input-nome">Nome</label>
-                <input type="text" id="input-nome">
-                
-                <section id="botoes">
-                    <button type="button" id="adicionarFatia" onclick="adicionarFatia()">
-                        Adicionar Pedaço 
-                        <img src="img/fatia-pizza.png" alt="">
-                    </button> 
-                    <button type="button" id="removerFatia" onclick="removerFatia()">
-                        Remover Pedaço 
-                        <img src="img/fatia-pizza.png" alt="">
-                    </button> 
-                </section>
-                <!-- <button type="button" id="adicionarParticipante" onclick="adicionarUsuario()" >Adicionar Participante</button> -->
+            <div id="participantes-section">
+                <h2>Participantes</h2>
+                <div id="lista-participantes">
+                    <p class="sem-participantes">Nenhum participante ainda. Adicione alguém!</p>
+                </div>
             </div>
         </div>
     </main>
@@ -144,7 +54,133 @@
         <h2>© Todos os direitos reservados para o desenvolvedor <span>Matteo Kmeliuskas</span></h2>
     </footer>
 
-    
+    <script>
+        // Array para armazenar os participantes
+        let participantes = [];
+        let participantesIdCounter = 0;
 
+        // Função para adicionar um novo participante
+        function adicionarParticipante() {
+            const nomeInput = document.getElementById('input-nome');
+            const nome = nomeInput.value.trim();
+
+            if (nome === '') {
+                alert('Por favor, insira um nome!');
+                return;
+            }
+
+            // Criar novo participante
+            const novoParticipante = {
+                id: ++participantesIdCounter,
+                nome: nome,
+                fatias: 1
+            };
+
+            participantes.push(novoParticipante);
+            nomeInput.value = '';
+            atualizarListaParticipantes();
+        }
+
+        // Função para remover um participante
+        function removerParticipante(id) {
+            participantes = participantes.filter(p => p.id !== id);
+            atualizarListaParticipantes();
+        }
+
+        // Função para adicionar fatia a um participante específico
+        function adicionarFatia(id) {
+            const participante = participantes.find(p => p.id === id);
+            if (participante) {
+                participante.fatias++;
+                atualizarListaParticipantes();
+            }
+        }
+
+        // Função para remover fatia de um participante específico
+        function removerFatia(id) {
+            const participante = participantes.find(p => p.id === id);
+            if (participante) {
+                participante.fatias--;
+                if (participante.fatias < 1) {
+                    participante.fatias = 1;
+                }
+                atualizarListaParticipantes();
+            }
+        }
+
+        // Função para gerar as pizzas visuais
+        function gerarPizzas(fatias) {
+            const totalPizzas = Math.ceil(fatias / 6);
+            const maxPorTela = window.innerWidth <= 575.98 ? 2 : (window.innerWidth <= 767.98 ? 2 : (window.innerWidth <= 991.98 ? 3 : 4));
+            let html = '';
+
+            // Mostrar ellipsis se houver pizzas ocultas (no início)
+            if (totalPizzas > maxPorTela) {
+                html += '<div class="pizza-ellipsis">...</div>';
+            }
+
+            // Mostrar apenas as últimas pizzas
+            const inicio = Math.max(0, totalPizzas - maxPorTela);
+            for (let p = inicio; p < totalPizzas; p++) {
+                const fimFatia = Math.min(p * 6 + 6, fatias);
+                const fatiasNaPizza = fimFatia - p * 6;
+
+                html += `<div class="pizza-container">`;
+                for (let i = 1; i <= 6; i++) {
+                    const mostrar = i <= fatiasNaPizza;
+                    html += `<img src="img/fatia-pizza2.png" class="fatia-pizza fatia-${i}" style="display: ${mostrar ? 'inline-block' : 'none'};">`;
+                }
+                html += `</div>`;
+            }
+
+            return html;
+        }
+
+        // Função para atualizar a lista de participantes na tela
+        function atualizarListaParticipantes() {
+            const lista = document.getElementById('lista-participantes');
+
+            if (participantes.length === 0) {
+                lista.innerHTML = '<p class="sem-participantes">Nenhum participante ainda. Adicione alguém!</p>';
+                return;
+            }
+
+            lista.innerHTML = participantes.map(participante => `
+                <div class="participante-card" data-id="${participante.id}">
+                    <div class="participante-header">
+                        <h3>${participante.nome}</h3>
+                        <button type="button" class="btn-remover-pessoa" onclick="removerParticipante(${participante.id})">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                    <div class="participante-conteudo">
+                        <div class="pizzas-wrapper">
+                            ${gerarPizzas(participante.fatias)}
+                        </div>
+                        <div class="contador-e-botoes">
+                            <div class="contador-pizza"><span>${participante.fatias}</span></div>
+                            <div class="botoes-participante">
+                                <button type="button" class="btn-fatia" onclick="adicionarFatia(${participante.id})">
+                                    <i class="fas fa-plus"></i>
+                                </button>
+                                <button type="button" class="btn-fatia" onclick="removerFatia(${participante.id})">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Permite adicionar participante com Enter
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('input-nome').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    adicionarParticipante();
+                }
+            });
+        });
+    </script>
 </body>
 </html>
