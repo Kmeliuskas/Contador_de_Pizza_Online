@@ -14,6 +14,7 @@ body {
     min-height: 100vh;
     background: linear-gradient(135deg, #de7d1c 0%, #f6b84c 100%);
     flex-direction: column;
+    overflow: visible;
 }
 
 /* Estilizando o titulo da Página */
@@ -98,13 +99,23 @@ body {
     color: #ff8c00;
 }
 
+#main {
+    overflow: visible;
+}
+
 /* Estilizando a seção de participantes */
+#container {
+    width: 100%;
+    overflow: visible;
+}
+
 #participantes-section {
     margin-top: 20px;
     padding: 20px;
     width: 100%;
     max-width: 800px;
     overflow-x: auto;
+    overflow-y: visible;
 }
 
 #participantes-section h2 {
@@ -119,6 +130,7 @@ body {
     display: flex;
     flex-direction: column;
     gap: 20px;
+    overflow: visible;
 }
 
 .sem-participantes {
@@ -134,6 +146,7 @@ body {
     padding: 20px;
     border: none;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    overflow: visible;
 }
 
 .participante-header {
@@ -165,34 +178,37 @@ body {
     color: #b91c1c;
 }
 
-.participante-conteudo {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 20px;
-    padding: 20px 0 15px 15px;
-}
-
 /* Pizza container - visual circular igual ao original */
 .pizzas-wrapper {
     display: flex;
-    flex-wrap: nowrap;
-    align-items: center;
+    flex-wrap: wrap;
+    align-items: flex-start;
     gap: 10px;
-}
-
-.pizza-container {
-    width: 120px;
-    height: 110px;
-    position: relative;
-    flex-shrink: 0;
-    margin-left: 15px;
-    margin-top: 5px;
+    overflow: visible;
+    padding-top: 50px;
 }
 
 .pizzas-wrapper .pizza-container:first-child {
     margin-left: 0;
+}
+
+.participante-conteudo {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 0 0 15px 15px;
+    overflow: visible;
+}
+
+.pizza-container {
+    width: 100px;
+    height: 100px;
+    position: relative;
+    flex-shrink: 0;
+    margin-left: 15px;
+    overflow: visible;
 }
 
 .pizza-ellipsis {
@@ -212,6 +228,9 @@ body {
 
 .pizza-container .fatia-pizza {
     position: absolute;
+    z-index: 1;
+    max-width: none;
+    max-height: none;
 }
 
 .pizza-container .fatia-1 {

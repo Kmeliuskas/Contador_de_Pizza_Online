@@ -114,23 +114,24 @@
             const maxPorTela = window.innerWidth <= 575.98 ? 2 : (window.innerWidth <= 767.98 ? 2 : (window.innerWidth <= 991.98 ? 3 : 4));
             let html = '';
 
-            // Mostrar ellipsis se houver pizzas ocultas (no início)
+            // Mostrar ellipsis se houver mais pizzas que o limite
             if (totalPizzas > maxPorTela) {
                 html += '<div class="pizza-ellipsis">...</div>';
             }
 
-            // Mostrar apenas as últimas pizzas
-            const inicio = Math.max(0, totalPizzas - maxPorTela);
-            for (let p = inicio; p < totalPizzas; p++) {
+            // Mostrar apenas as últimas pizzas até o limite
+            const startIndex = Math.max(0, totalPizzas - maxPorTela);
+            for (let p = startIndex; p < totalPizzas; p++) {
                 const fimFatia = Math.min(p * 6 + 6, fatias);
                 const fatiasNaPizza = fimFatia - p * 6;
 
-                html += `<div class="pizza-container">`;
+                // Pizza opaca se estiver completa
+                html += `<div class="pizza-container" style="opacity: ${fatiasNaPizza === 6 ? '0.3' : '1'};">`;
                 for (let i = 1; i <= 6; i++) {
                     const mostrar = i <= fatiasNaPizza;
                     html += `<img src="img/fatia-pizza2.png" class="fatia-pizza fatia-${i}" style="display: ${mostrar ? 'inline-block' : 'none'};">`;
                 }
-                html += `</div>`;
+                html += '</div>';
             }
 
             return html;
