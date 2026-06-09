@@ -91,6 +91,7 @@ body {
     color: #de7d1c;
     font-weight: 600;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    touch-action: manipulation;
 }
 
 #inputs #adicionarParticipante:hover {
@@ -171,6 +172,7 @@ body {
     padding: 8px;
     border-radius: 8px;
     transition: all 0.3s ease;
+    touch-action: manipulation;
 }
 
 .btn-remover-pessoa:hover {
@@ -293,6 +295,7 @@ body {
     font-size: 20px;
     transition: all 0.3s ease;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    touch-action: manipulation;
 }
 
 .btn-fatia:hover {
